@@ -32,6 +32,7 @@ public class UnitMoving : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(pos);
         Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
     }*/
+    /*
     Ray ray = new Ray();
     
     private void Update()
@@ -47,4 +48,22 @@ public class UnitMoving : MonoBehaviour
         }
 
     }
+    */
+   // private RayScript rayScript;
+    public GameObject Unit;
+    private void Start()
+    {
+       // rayScript = GetComponent<RayScript>();
+    }
+    private void Update()
+    {
+       // Debug.Log("hit transform " + rayScript.rayPositionVector);
+        if (Input.GetMouseButtonDown(0))
+        {
+          
+            // Debug.Log(screenMousePosWithDepth);
+          //  transform.position = rayScript.rayPositionVector;
+        }//Ѕудет измен€тьс€ только тогда когда ты кликнул
+    }
+
 }
