@@ -3,67 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitMoving : MonoBehaviour
-{ /*
-    public Vector3 mousePos;
-    public Vector3 mousePosClick;
-    public GameObject Unit;
-    void Update()
+{
+    public GenerateUnit generateUnit;
+   // public List<GameObject> Unit;
+    public void Start()
     {
-       mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//изменяется все время == позиция мыши
-        if (Input.GetMouseButtonDown(0))
-        {
-           // Transform myObject = transform;
-            Vector3 screenMousePosWithDepth = new Vector3((int)Input.mousePosition.x/100+0.5f, 1f, (int)Input.mousePosition.z/100+ 0.5f);
-           // Debug.Log(screenMousePosWithDepth);
-            transform.position = screenMousePosWithDepth;
-        }//Будет изменяться только тогда когда ты кликнул
+     generateUnit = GameObject.Find("BaseUnit(Clone)").GetComponent<GenerateUnit>();
     }
-    */
-    /*
-    public Camera cam;
-    public Vector3 pos = new Vector3(2, 0, 2);
-    private void Start()
+    public void UnitTransformPosition(Vector3 newPosition, int index)
     {
-        cam = GetComponent<Camera>();
-        
+        //    generateUnit.Units[index].transform.position = newPosition;
+        //Debug.Log("Unit [0] pisition " + generateUnit.Units[0].transform.position);
     }
-    private void Update()
-    {
-        Ray ray = cam.ScreenPointToRay(pos);
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
-    }*/
-    /*
-    Ray ray = new Ray();
-    
-    private void Update()
-    {
-        ray.origin = transform.position;
-        Vector3 directioinOfRay = new Vector3(1, -1, 0);
-        ray.direction = directioinOfRay;
-        Debug.DrawRay(transform.position, directioinOfRay * 10, Color.red);
-        RaycastHit hit;
-       if(Physics.Raycast(ray, out hit))
-        {
-        //    Debug.Log("hit");
-        }
-
-    }
-    */
-   // private RayScript rayScript;
-    public GameObject Unit;
-    private void Start()
-    {
-       // rayScript = GetComponent<RayScript>();
-    }
-    private void Update()
-    {
-       // Debug.Log("hit transform " + rayScript.rayPositionVector);
-        if (Input.GetMouseButtonDown(0))
-        {
-          
-            // Debug.Log(screenMousePosWithDepth);
-          //  transform.position = rayScript.rayPositionVector;
-        }//Будет изменяться только тогда когда ты кликнул
-    }
-
 }

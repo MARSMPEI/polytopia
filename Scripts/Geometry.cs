@@ -9,7 +9,7 @@ public class Geometry : MonoBehaviour
     {
         float x = -3.5f + 1.0f * gridPoint.x;
         float z = -3.5f + 1.0f * gridPoint.y;
-        Debug.Log(new Vector3(x, 0, z));
+        //Debug.Log(new Vector3(x, 0, z));
         return new Vector3(x, 0, z);
 
     }

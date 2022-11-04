@@ -5,9 +5,12 @@ using UnityEngine;
 public class TileSelector : MonoBehaviour
 {
     public GameObject tileHighlightPrefab;
-
+    public GenerateUnit generateUnit;
     private GameObject tileHighlight;
-    // Start is called before the first frame update
+
+
+    public Vector3 newPosition;
+    private Vector3 upUnit;     // Start is called before the first frame update
     void Start()
     { 
         
@@ -15,7 +18,9 @@ public class TileSelector : MonoBehaviour
         Vector3 point = Geometry.PointFromGrid(gridPoint);
         tileHighlight = Instantiate(tileHighlightPrefab, point, Quaternion.identity, gameObject.transform);
         tileHighlight.SetActive(false);
-        
+        generateUnit = GameObject.Find("UnitGenerator").GetComponent<GenerateUnit>();
+
+        upUnit = new Vector3(0, 1, 0);
     }
 
     // Update is called once per frame
@@ -30,25 +35,19 @@ public class TileSelector : MonoBehaviour
             Vector2Int gridPoint = Geometry.GridFromPoint(point);
 
             tileHighlight.SetActive(true);
-            tileHighlight.transform.position =
-                Geometry.PointFromGrid(gridPoint);
+            tileHighlight.transform.position =Geometry.PointFromGrid(gridPoint);
+            newPosition = tileHighlight.transform.position + upUnit;
         }
         else
         {
             tileHighlight.SetActive(false);
         }
-        /*
+        
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject selectedPiece =
-                GameManager.instance.PieceAtGrid(gridPoint);
-            if (GameManager.instance.DoesPieceBelongToCurrentPlayer(selectedPiece))
-            {
-                GameManager.instance.SelectPiece(selectedPiece);
-                // Опорная точка 1: сюда мы позже добавим вызов ExitState
-            }
+            generateUnit.UnitTransformPosition(newPosition, 0);
         }
-        */
+        
     }
     public void EnterState()
     {
